@@ -1,12 +1,17 @@
 class Boid {
-  constructor() {
-    this.maxSpeed = 5;
+  constructor(
+    maxSpeed = 3, 
+    directionChangeFactor = 0.5, 
+    perceptionRadius = 50, 
+    separationRadius = 15
+  ) {
+    this.maxSpeed = maxSpeed;
     this.avoidWallsDistance = 50;
-    this.directionChangeFactor = 0.5;
+    this.directionChangeFactor = directionChangeFactor;
     this.initialDirectionChangeTimer = Math.random() * 300 + 100;
     this.directionChangeTimer = this.initialDirectionChangeTimer;
-    this.perceptionRadius = 50;
-    this.separationRadius = 15;
+    this.perceptionRadius = perceptionRadius;
+    this.separationRadius = separationRadius;
 
     this.position = {
       x: Math.random() * (canvas.width - wallPadding * 2) + wallPadding,
@@ -18,7 +23,7 @@ class Boid {
     };
 
     this.triangleSize = 8;
-    this.triangleColor = "#000";
+    this.triangleColor = "#ffffff";
   }
 
   bounceFromWalls() {
@@ -208,7 +213,7 @@ class Boid {
     this.boidsAlgorithm();
     
     this.limitSpeed();
-    
+
     this.avoidFromWalls();
 
     this.updatePosition();

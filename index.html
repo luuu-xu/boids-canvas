@@ -3,21 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-
-    canvas {
-      display: block;
-    }
-  </style>
-  <title>Boids Simulation</title>
+  <title>Boids on Canvas</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="boidsCanvas"></canvas>
+  <canvas id="boids-canvas"></canvas>
+
+  <button id="btn-open" class="visible">
+    +
+  </button>
+
+  <button id="btn-close" class="hidden">
+    &#x2715
+  </button>
+
+  <div id="controls" class="hidden">
+    <label for="numberOfBoids">Number of Boids</label>
+    <input type="range" id="numberOfBoids" min="10" max="490" step="10" value="250">
+
+    <label for="boidSpeed">Max Speed</label>
+    <input type="range" id="boidSpeed" min="1" max="5" value="3">
+
+    <label for="directionChangeFactor">Random Direction Change</label>
+    <input type="range" id="directionChangeFactor" min="0" max="1" step="0.1" value="0.5">
+
+    <label for="perceptionRadius">Perception Radius</label>
+    <input type="range" id="perceptionRadius" min="1" max="99" value="50">
+
+    <label for="separationRadius">Separation Radius</label>
+    <input type="range" id="separationRadius" min="1" max="29" value="15">
+  </div>
+
   <script src="Boid.js"></script>
   <script src="script.js"></script>
+  <script src="control-panel.js"></script>
 </body>
 </html>

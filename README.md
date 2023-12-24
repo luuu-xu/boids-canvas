@@ -34,9 +34,22 @@ Now the boids look quite lively and real, but somehow their speed will increase 
 
 The simulation is done within [HTML Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) element. It was interesting and fun to learn using Canvas as well!
 
+## Control Panel
+
+A simple control panel is added to the page where a user can adjust in real-time these five parameters:
+  1. Number of Boids
+  2. Maximum Speed
+  3. Random Direction Changing Factor
+  4. Perception Radius
+  5. Separation Radius
+
+Debounce functionality is added naturally when adjusting parameters to avoid multiple calls to events.
+
+Adjusting the parameters give users a better understanding how efficient and elegant the algorithm is to simulate flocks.
+
 ## Additions to make
 
-- A control panel that has adjustable parameters: 
+- [x] A control panel that has adjustable parameters: 
 
   1. Number of Boids
   2. Maximum Speed
@@ -44,6 +57,6 @@ The simulation is done within [HTML Canvas](https://developer.mozilla.org/en-US/
   4. Perception Radius
   5. Separation Radius
 
-- Possibly add "Predator" into the flocks which flocks will avoid aggressively.
+- [ ] Possibly add "Predator" into the flocks which flocks will avoid aggressively.
 
-- Randomly assign different groups (colors) to boids, and make them attract to its own group, forming uniformly coloured flocks.
+- [ ] Randomly assign different groups (colors) to boids, and make them attract to its own group, forming uniformly coloured flocks.
