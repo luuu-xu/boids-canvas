@@ -1,16 +1,24 @@
-const canvas = document.getElementById('boidsCanvas');
+const canvas = document.getElementById('boids-canvas');
 const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const numberOfBoids = 500;
-const flock = [];
+const initialNumberOfBoids = document.getElementById("numberOfBoids").value;
+let flock = [];
 const wallPadding = 0;
 
-function setup() {
+function setup(
+  numberOfBoids, 
+  maxSpeed, 
+  directionChangeFactor, 
+  perceptionRadius, 
+  separationRadius
+) {
+  flock = [];
+
   for (let i = 0; i < numberOfBoids; i++) {
-    flock.push(new Boid());
+    flock.push(new Boid(maxSpeed, directionChangeFactor, perceptionRadius, separationRadius));
   }
 
   requestAnimationFrame(draw);
@@ -24,6 +32,10 @@ function draw() {
     boid.drawOnCanvas();
   }
 
+  // const oneBoid = flock[0];
+  // const speed = Math.sqrt(Math.pow(oneBoid.velocity.x, 2) + Math.pow(oneBoid.velocity.y, 2));
+  // console.log(`Speed: ${speed}`);
+
   requestAnimationFrame(draw);
 }
 
@@ -32,4 +44,4 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
 });
 
-setup();
+setup(initialNumberOfBoids);
