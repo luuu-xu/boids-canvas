@@ -8,6 +8,12 @@ const initialNumberOfBoids = document.getElementById("numberOfBoids").value;
 let flock = [];
 const wallPadding = 0;
 
+const fpsDisplay = document.getElementById("fps-display");
+let fpsCount = 0;
+let lastTimestamp = performance.now();
+const targetFPS = 60;
+const targetFrameTime = 1000 / targetFPS;
+
 function setup(
   numberOfBoids, 
   maxSpeed, 
@@ -24,17 +30,24 @@ function setup(
   requestAnimationFrame(draw);
 }
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+function draw(timestamp) {
+  const elapsed = timestamp - lastTimestamp;
 
-  for (const boid of flock) {
-    boid.move();
-    boid.drawOnCanvas();
+  if (elapsed >= targetFrameTime) {
+    fpsCount++;
+    lastTimestamp = timestamp;
+
+    const fps = (fpsCount * 1000) / elapsed;
+    fpsDisplay.textContent = `FPS: ${fps.toFixed(0)}`;
+    fpsCount = 0;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const boid of flock) {
+      boid.move();
+      boid.drawOnCanvas();
+    }
   }
-
-  // const oneBoid = flock[0];
-  // const speed = Math.sqrt(Math.pow(oneBoid.velocity.x, 2) + Math.pow(oneBoid.velocity.y, 2));
-  // console.log(`Speed: ${speed}`);
 
   requestAnimationFrame(draw);
 }

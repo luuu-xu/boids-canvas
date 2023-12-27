@@ -43,7 +43,7 @@ A simple control panel is added to the page where a user can adjust in real-time
   4. Perception Radius
   5. Separation Radius
 
-Debounce functionality is added naturally when adjusting parameters to avoid multiple calls to events.
+Debounce functionality (500ms) is added naturally when adjusting parameters to avoid multiple calls to events.
 
 Adjusting the parameters give users a better understanding how efficient and elegant the algorithm is to simulate flocks.
 
